@@ -1,0 +1,38 @@
+# Tilemap Editor
+
+A small 2D tilemap editor written in Python with pygame-ce. Paint levels on a grid, save them to JSON, and load them into a game engine.
+To be used beside my 2d engine to draw maps into JSON and read them from Frost.
+
+## Features
+
+- 25×18 grid of 32 px tiles with a hover highlight
+- Five tile types: Grass, Dirt, Stone, Water, Spikes
+- Click-and-drag painting; right-click to erase
+- Brush palette: keys `1`–`5` or click a swatch
+- Save and load to `level.json` with validation (bad files are rejected, never half-loaded)
+- Undo and redo by brush stroke (one drag = one undo step), up to 100 steps
+
+## Controls
+
+ Input                             Action              
+ Left mouse - click or drag        Paint selected tile 
+ Right mouse - click or drag       Erase               
+ `1`–`5` / click                   Select tile type    
+ `Ctrl+S`                          Save `level.json`   
+ `Ctrl+O`                          Load `level.json`   
+ `Ctrl+Z`                          Undo                
+ `Ctrl+Y` / `Ctrl+Shift+Z`         Redo                
+
+## File format
+
+```json
+{
+  "version": 1,
+  "tile_size": 32,
+  "width": 25,
+  "height": 18,
+  "tile_types": { "1": "Grass", "2": "Dirt", "3": "Stone", "4": "Water", "5": "Spikes" },
+  "tiles": [[0, 0, 1, ...], ...]
+}
+```
+
